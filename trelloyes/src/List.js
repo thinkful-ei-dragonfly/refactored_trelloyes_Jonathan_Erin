@@ -5,11 +5,9 @@ import './styles/List.css';
 import Card from './Card';
 
 function List(props) {
-  console.log(props);
-  console.log(props.cards);
   const cards = props.cards.map((card, i) => {
     return(
-      <Card key={i} title={card.title} content={card.content}/>
+      <Card key={i} title={card.title} content={card.content} deleteItem={() => props.handleDelete(props.id)} />
     )
   }); 
   return (
