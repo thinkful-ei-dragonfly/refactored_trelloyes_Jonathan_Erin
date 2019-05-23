@@ -4,19 +4,15 @@ import './styles/Card.css';
 
 function Card(props) {
   
-  onDelete = e => {
-    props.deleteItem(e.target);
-  }
-  
-  render(){
+  return (
     
     <div className="Card">
-      <button onClick={this.onDelete} type="button">Delete</button>
+      <button onClick={() => props.deleteItem(props.Itemid)} type="button">Delete</button>
       <h3>{props.title}</h3>
       <p>{props.content}</p>
     </div>
-  
+  )
 }
-}
+//hello
 
 export default Card;
