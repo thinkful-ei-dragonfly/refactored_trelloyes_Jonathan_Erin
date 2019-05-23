@@ -30,7 +30,7 @@ class App extends React.Component {
       },
     ],
     allCards: {
-      'a': { title: 'First card', content: 'lorem ipsum' },
+     a' ': { title: 'First card', content: 'lorem ipsum' },
       'b': { title: 'Second card', content: 'lorem ipsum' },
       'c': { title: 'Third card', content: 'lorem ipsum' },
       'd': { title: 'Fourth card', content: 'lorem ipsum' },
@@ -59,13 +59,15 @@ class App extends React.Component {
   handleDelete = (Itemid) => {
     console.log('handleDelete')
     const newState = omit(state.allCards, Itemid)
+    
     this.setState({
       allCards: newState,
     })
     }
 
     handleNewCard = (Listid) => {
-      const newRandomCard = () => {
+      
+      const newRandomCard = () => { //need to refactor
         const id = Math.random().toString(36).substring(2, 4)
           + Math.random().toString(36).substring(2, 4);
         return {
@@ -74,11 +76,16 @@ class App extends React.Component {
           content: 'lorem ipsum',
         }
       }
-      const newCards = {...allCards, newRandomCard}
+
+      const newCards = {...state.allCards, newRandomCard}
+      
       const targetList = state.lists.find(item => item.id === Listid)
       targetList.cardIds = [...cardIds, newRandomCard.id]
+
+      const newLists = this.state.lists.map((item, id) => item.id === Listid ? )
+      
       this.setState({
-        lists: ,
+        lists: newLists, //this.state.lists.map(...)
         allCards: newCards,
       })
     }
