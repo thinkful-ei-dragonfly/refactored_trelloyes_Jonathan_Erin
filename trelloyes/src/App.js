@@ -56,18 +56,30 @@ class App extends React.Component {
   }
 
   }
-  handleDelete = (id) => {
+  handleDelete = (Itemid) => {
     console.log('handleDelete')
-    const newState = omit(state.allCards, id)
-    this.setState(newState)
+    const newState = omit(state.allCards, Itemid)
+    this.setState({
+      allCards: newState,
+    })
     }
 
-    handleNewCard = (listId) => {
+    handleNewCard = (Listid) => {
+      const newRandomCard = () => {
+        const id = Math.random().toString(36).substring(2, 4)
+          + Math.random().toString(36).substring(2, 4);
+        return {
+          id,
+          title: `Random Card ${id}`,
+          content: 'lorem ipsum',
+        }
+      }
+      const newCards = {...allCards, newRandomCard}
+      const targetList = state.lists.find(item => item.id === Listid)
+      targetList.cardIds = [...cardIds, newRandomCard.id]
       this.setState({
         lists: ,
-        allCards: {
-          'n': {title '', content: ''}
-        },
+        allCards: newCards,
       })
     }
 
