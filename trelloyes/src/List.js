@@ -5,10 +5,10 @@ import './styles/List.css';
 import Card from './Card';
 
 function List(props) {
-  const cards = props.cards.map((card, i) => {
+  const cards = props.cards.map((card, index) => {
     // console.log(card.title);
     return(
-      <Card Itemid ={i} key={i} title={card.title} content={card.content} deleteItem={() => props.deleteItem(props.Itemid)} makeNewCard={() => props.makeNewCard(props.Listid)} />
+      <Card id={card.id} key={card.id} title={card.title} content={card.content} deleteItem={props.deleteItem} makeNewCard={() => props.makeNewCard(props.Listid)} />
     )
   }); 
 
